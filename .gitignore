@@ -1,0 +1,16 @@
+# ignore all logs
+*.log
+
+#ignore solutions
+*.sln
+
+#ignore visual studio folders
+.vs/
+
+#ignore debug folder
+Debug/
+
+#ignore release folder
+Release/
+
+
