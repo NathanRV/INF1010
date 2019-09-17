@@ -12,7 +12,7 @@ Membre::Membre() : nom_("Inconnu"),points_(0),capaciteBillets_(CAPACITE_INITIALE
 	billets_ = new Billet* [capaciteBillets_]; //crée tableau de pointeurs
 	for (int i = 0; i < capaciteBillets_; i++)//initialise tous les pointeurs
 		billets_[i] = nullptr;
-	coupons_ = new Coupon * [capaciteCoupons_]; //crée tableau de pointeurs
+	coupons_ = new Coupon* [capaciteCoupons_]; //crée tableau de pointeurs
 	for (int i = 0; i < capaciteCoupons_; i++) //initialise tous les pointeurs
 		coupons_[i] = nullptr;
 }
