@@ -17,9 +17,9 @@
 	endroit.
 
 3.	Pourquoi avons-nous dû surcharger l’opérateur = et le constructeur par copie pour la classe Membre?
-	Puisque l'on ne veut pas que la copie ait les mêmes billets d'avion que l'original alors
-	il faut surcharger l'opération afin de pouvoir le préciser.
-
+	Puisque l'on ne veut pas que la copie ait des pointeurs vers les mêmes billets d'avion que l'original alors
+	il faut surcharger l'opération afin de pouvoir le préciser. De cette manière, ils auront les mêmes billets, mais 
+	des pointeurs vers la même adresse.
 
 
 4.	Qu’est-ce qui différencie l’opérateur = du constructeur par copie?

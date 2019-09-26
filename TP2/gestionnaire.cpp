@@ -1,16 +1,30 @@
-/*
- * Date : 12 Septembre 2019
- * Auteur : Philippe CÔTÉ-MORNEAULT
- */
-
+/****************************************************************************
+ * Fichier: gestionnaire.cpp
+ * Auteur: Nathan Ramsay-Vejlens,Freddy Some,Lorenzo Florenty
+ * Date: 23 sept 2019
+ * Mise a jour : 23 sept 2019
+ * Description: Implémentation de la classe gestionnaire
+ ****************************************************************************/
 #include "gestionnaire.h"
 
+ /****************************************************************************
+  * Fonction:	Gestionnaire::Gestionnaire
+  * Description: Constructeur par défaut
+  * Paramètres:	aucun
+  * Retour:		aucun
+  ****************************************************************************/
 Gestionnaire::Gestionnaire() :
 	membres_(0),
 	coupons_(0)
 {
 }
 
+/****************************************************************************
+ * Fonction:	Gestionnaire::~Gestionnaire
+ * Description: Destructeur
+ * Paramètres:	aucun
+ * Retour:		aucun
+ ****************************************************************************/
 Gestionnaire::~Gestionnaire()
 {
 	while (!membres_.empty())
@@ -25,28 +39,60 @@ Gestionnaire::~Gestionnaire()
 	}
 }
 
+/****************************************************************************
+ * Fonction:	Gestionnaire::getMembres
+ * Description: Obtenir la variable membres_
+ * Paramètres:	aucun
+ * Retour:		vector<Membre*> 
+ ****************************************************************************/
 vector<Membre*> Gestionnaire::getMembres() const
 {
 	return membres_;
 }
 
+/****************************************************************************
+ * Fonction:	Gestionnaire::getMembres
+ * Description: Obtenir la variable coupons_
+ * Paramètres:	aucun
+ * Retour:		vector<Coupon*>
+ ****************************************************************************/
 vector<Coupon*> Gestionnaire::getCoupons() const
 {
 	return coupons_;
 }
 
+/****************************************************************************
+ * Fonction:	Gestionnaire::ajouterMembre
+ * Description: trouve le membre dont le nom est passé en parametre et le met dans la liste
+ * Paramètres:	(string)nomMembre
+ * Retour:		aucun
+ ****************************************************************************/
 void Gestionnaire::ajouterMembre(const string& nomMembre)
 {
 	Membre* membre = new Membre(nomMembre);
 	membres_.push_back(membre);
 }
 
+/****************************************************************************
+ * Fonction:	Gestionnaire::ajouterCoupon
+ * Description: Creer un coupon avec les infos passé en parametre et le met dans la liste
+ * Paramètres:	(string)code
+                (double)rabais
+				(int)cout
+ * Retour:		aucun
+ ****************************************************************************/
 void Gestionnaire::ajouterCoupon(const string& code, double rabais, int cout)
 {
 	Coupon* coupon = new Coupon(code, rabais, cout);
 	coupons_.push_back(coupon);
 }
 
+/****************************************************************************
+ * Fonction:	Gestionnaire::trouverMembre
+ * Description: Trouve le membre dont le nom est passé en parametre
+ * Paramètres:	(string)nomMembre
+ * Retour:		Membre*
+ ****************************************************************************/
 Membre* Gestionnaire::trouverMembre(const string& nomMembre) const
 {
 	for (unsigned int i = 0; i < membres_.size(); i++) {
@@ -60,6 +106,18 @@ Membre* Gestionnaire::trouverMembre(const string& nomMembre) const
 	return nullptr;
 }
 
+/****************************************************************************
+ * Fonction:	Gestionnaire::assignerBillet
+ * Description: creer un billet avec les infos passé en parametre et l'atribut au membre dont le nom est passé en parametre
+ * Paramètres:	(string)nomMembre
+                (string)pnr
+                (double)prixBase
+				(string)od
+				(TarifBillet)tarif
+				(string)dateVol
+				(bool)utiliserCoupon
+ * Retour:		aucun
+ ****************************************************************************/
 void Gestionnaire::assignerBillet(const string& nomMembre, const string& pnr, double prixBase, const string& od, TarifBillet tarif, const string& dateVol, bool utiliserCoupon)
 {
 	double prixReel;
@@ -78,6 +136,12 @@ void Gestionnaire::assignerBillet(const string& nomMembre, const string& pnr, do
 	membre->ajouterBillet(pnr, prixReel, od, tarif, dateVol);
 }
 
+/****************************************************************************
+ * Fonction:	Gestionnaire::appliquerCoupon
+ * Description: Le membre passer en parametre applique un coupon pour baisser le prix passé en parametre
+ * Paramètres:	(Membre*)membre
+ * Retour:		(double)prix
+ ****************************************************************************/
 double Gestionnaire::appliquerCoupon(Membre* membre, double prix)
 {
 	if (membre->getCoupons().size() == 0) {
@@ -100,6 +164,12 @@ double Gestionnaire::appliquerCoupon(Membre* membre, double prix)
 	return prix * meilleurCoupon->getRabais();
 }
 
+/****************************************************************************
+ * Fonction:	Gestionnaire::acheterCoupon
+ * Description: Permet d'acheter le meilleur coupon pour le membre dont le nom est passé en parametre
+ * Paramètres:	(string)nomMembre
+ * Retour:		aucun
+ ****************************************************************************/
 void Gestionnaire::acheterCoupon(const string& nomMembre)
 {
 	if (coupons_.size() == 0) {
@@ -137,7 +207,12 @@ void Gestionnaire::acheterCoupon(const string& nomMembre)
 	}
 }
 
-// TODO: Remplacer cette methode(afficherInfos()) par l'operateur << 
+/****************************************************************************
+ * Fonction:	operator<<
+ * Description: Remplacer cette methode(afficherInfos()) par l'operateur << 
+ * Paramètres:	aucun
+ * Retour:		aucun
+ ****************************************************************************/
 
 ostream& operator<<(ostream& os, const Gestionnaire& g)
 {
