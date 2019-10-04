@@ -2,6 +2,8 @@
 * Titre : billetRegulier.h - Travail Pratique #3
 * Date : 20 Septembre 2019
 * Auteur : Jeffrey Lavallee
+ * Mise à jour le : 4 Octobre 2019
+ * Par : Nathan RAMSAY-VEJLENS
 */
 
 #ifndef BILLET_REGULIER_H

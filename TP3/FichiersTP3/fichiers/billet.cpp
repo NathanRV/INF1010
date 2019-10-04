@@ -1,25 +1,31 @@
 /*
  * Date : 12 Septembre 2019
  * Auteur : Philippe CÔTÉ-MORNEAULT
+ * Mise à jour le : 4 Octobre 2019
+ * Par : Nathan RAMSAY-VEJLENS
  */
 
 #include "billet.h"
 
+//Ajout de typeBillet_
 Billet::Billet() :
 	pnr_(""),
 	nomPassager_(""),
 	prix_(0),
 	od_(""),
-	tarif_(TarifBillet::Economie)
+	tarif_(TarifBillet::Economie),
+	typeBillet_(TypeBillet::Billet_Base)
 {
 }
 
+//Ajout de typeBillet_
 Billet::Billet(const string& pnr, const string& nomPassager, double prix, const string& od, TarifBillet tarif, TypeBillet typeBillet) :
 	pnr_(pnr),
 	nomPassager_(nomPassager),
 	prix_(prix),
 	od_(od),
-	tarif_(tarif)
+	tarif_(tarif),
+	typeBillet_(typeBillet)
 {
 }
 
@@ -50,6 +56,11 @@ string Billet::getOd() const
 TarifBillet Billet::getTarif() const
 {
 	return tarif_;
+}
+
+//Accesseur de typeBillet_
+TypeBillet Billet::getTypeBillet() const {
+	return typeBillet_;
 }
 
 
@@ -102,13 +113,13 @@ string Billet::formatTarif(TarifBillet tarif) const
 	}
 }
 
+//Retirer affichage de dateVol_
 ostream& operator<<(ostream& o, const Billet& billet)
 {
 	o << "\t\t- Billet " << billet.pnr_ << " (Classe : " << billet.formatTarif(billet.tarif_) << ")" << endl;
 	o << left << "\t\t\t" << setw(11) << "- Passager " << ": " << billet.nomPassager_ << endl;
 	o << "\t\t\t" << setw(11) << "- Prix" << ": " << billet.prix_ << "$" << endl;
 	o << "\t\t\t" << setw(11) << "- Trajet" << ": " << billet.od_ << endl;
-	o << "\t\t\t" << setw(11) << "- Vol le" << ": " << billet.dateVol_ << endl;
 
 	return o;
 }
