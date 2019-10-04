@@ -42,7 +42,7 @@ public:
 	void setPrix(double prix);
 	void setOd(const string& od);
 	void setTarif(TarifBillet tarif);
-	//à faire
+	//Fait
 	void setTypeBillet(TypeBillet typeBillet);
 
 	string formatTarif(TarifBillet tarif) const;

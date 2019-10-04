@@ -78,6 +78,12 @@ void Billet::setTarif(TarifBillet tarif)
 	tarif_ = tarif;
 }
 
+//Modificateur de typeBillet
+void Billet::setTypeBillet(TypeBillet typeBillet)
+{
+	typeBillet_ = typeBillet;
+}
+
 
 string Billet::formatTarif(TarifBillet tarif) const
 {

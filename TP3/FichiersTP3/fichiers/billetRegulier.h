@@ -12,14 +12,14 @@ class BilletRegulier : public Billet {
 
 public:
 	
-	//à faire 
+	//fait
 	BilletRegulier(const string& pnr, const string& nomPassager, double prix, const string& od, TarifBillet tarif, const string& dateVol, TypeBillet typeBillet);
-	//à faire 
+	//fait
 	string getDateVol() const;
-	//à faire 
+	//fait
 	void setDateVol(string dateVol);
 
-	//à faire 
+	//fait (à vérifier)
 	friend ostream& operator<<(ostream& o, const BilletRegulier& billet);
 private:
 	string dateVol_;

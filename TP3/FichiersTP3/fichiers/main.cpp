@@ -19,7 +19,7 @@ int main() {
 	// TESTS
 	Billet* b1 = new Billet();
 	Billet* b2 = new Billet("A1A1A1", "Fred", 3000, "YUL - CDG", TarifBillet::Premiere, Billet_Base);
-
+	
 	//Membre * m1 = new Membre();
 	Membre * m2 = new Membre("John", Membre_Occasionnel);
 	MembrePremium* mp1 = new MembrePremium("Alex");
