@@ -3,7 +3,6 @@
  * Auteur : Nathan RAMSAY-VEJLENS
  */
 
-#include "billet.h"
 #include "billetRegulier.h"
 
 //Constructeur par paramètre
