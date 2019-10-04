@@ -11,12 +11,12 @@
 #define MEMBRE_REGULIER_H
 
 
-#include "membre.h";
+#include "membre.h"
 
 class MembreRegulier : public Membre {
 public:
 
-	//à faire
+	//Fait
 	MembreRegulier(const string& nom, TypeMembre typeMembre);
 
 	int getPoints() const;
@@ -28,7 +28,7 @@ public:
 	Membre& operator-=(Coupon* coupon);
 	void modifierPoints(int points);
 
-	//à faire 
+	//fait (à vérifier)
 	void ajouterBillet(const string& pnr, double prix, const string& od, TarifBillet tarif, TypeBillet typeBillet, const string& dateVol);
 
 

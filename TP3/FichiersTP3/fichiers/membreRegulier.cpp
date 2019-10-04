@@ -1,9 +1,14 @@
+/*
+ * Date : 4 Octobre 2019
+ * Auteur : Nathan RAMSAY-VEJLENS
+ */
 
 #include "membreRegulier.h"
 
 //Constructeur par parametres
 MembreRegulier::MembreRegulier(const string& nom, TypeMembre typeMembre) 
-	:Membre(nom,typeMembre)
+	:Membre(nom,typeMembre),
+	points_(0)
 {}
 
 
@@ -35,7 +40,7 @@ Membre& MembreRegulier::operator+=(Coupon* coupon)
 
 Membre& MembreRegulier::operator-=(Coupon* coupon)
 {
-	for (int i = 0; i < coupons_.size(); i++) {
+	for (unsigned int i = 0; i < coupons_.size(); i++) {
 		if (coupons_[i] == coupon) {
 			coupons_[i] = coupons_[coupons_.size() - 1];
 			coupons_.pop_back();
@@ -52,20 +57,19 @@ void MembreRegulier::modifierPoints(int points)
 }
 
 void MembreRegulier::ajouterBillet(const string& pnr, double prix, const string& od, TarifBillet tarifBillet, TypeBillet typeBillet, const string& dateVol) {
-	if (typeBillet = TypeBillet::Billet_Base) {
-		Billet* billet = new Billet(pnr, nom_, prix, od, tarifBillet, typeBillet);
-		double pts = calculerPoints(billet);
+	
+	Billet* billet = nullptr;
+	if (typeBillet == TypeBillet::Billet_Regulier) {
+		billet = new BilletRegulier(pnr, nom_, prix, od, tarifBillet, dateVol, typeBillet);
 	}
-	else if (typeBillet == TypeBillet::Billet_Regulier) {
-		Billet* billet = new BilletRegulier(pnr, nom_, prix, od, tarifBillet, dateVol, typeBillet);
-		double pts = calculerPoints(billet);
+	else if (typeBillet == TypeBillet::Flight_Pass) {
+		billet = new FlightPass(pnr, nom_, prix, od, tarifBillet, typeBillet);
 	}
-	else if (typeBillet = TypeBillet::Flight_Pass) {
-		Billet* billet = new FlightPass(pnr, nom_, prix, od, tarifBillet, typeBillet);
-		double pts = calculerPoints(billet);
+	else { //billet_base
+		billet = new Billet(pnr, nom_, prix, od, tarifBillet, typeBillet);
 	}
 	billets_.push_back(billet); //ajout billet
-	modifierPoints(pts); //ajout de points
+	modifierPoints(calculerPoints(billet)); //ajout de points
 }
 
 double MembreRegulier::calculerPoints(Billet* billet) const
@@ -88,3 +92,11 @@ double MembreRegulier::calculerPoints(Billet* billet) const
 	return billet->getPrix() * 0.10 + bonus;
 }
 
+
+//à compléter
+ostream& operator<<(ostream& os, const MembreRegulier& membreRegulier)
+{
+	
+	// TODO: insérer une instruction return ici
+	return os;
+}

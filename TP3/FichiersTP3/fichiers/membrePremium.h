@@ -17,19 +17,19 @@ public:
 	MembrePremium(const string& nom);
 
 	//setters
-	//à faire
+	//Fait
 	void setJourRestants(unsigned int joursRestants);
-	//à faire
+	//Fait
 	void modifierPointsCumules(unsigned int pointCumulee);
 
 
 	//getters
-	//à faire
+	//Fait
 	unsigned int getJourRestants() const;
-	//à faire
+	//Fait
 	unsigned int getpointsCumulee() const;
 
-	//à faire
+	//Fait (à vérifier)
 	void ajouterBillet(const string& pnr, double prix, const string& od, TarifBillet tarif, TypeBillet typeBillet, const string& dateVol);
 	//à faire
 	void acheterCoupon(Coupon* coupon);

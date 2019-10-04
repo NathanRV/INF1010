@@ -13,11 +13,11 @@ Gestionnaire::Gestionnaire()
 
 Gestionnaire::~Gestionnaire()
 {
-	for (int i = 0; i < membres_.size(); i++) {
+	for (unsigned int i = 0; i < membres_.size(); i++) {
 		delete membres_[i];
 	}
 
-	for (int i = 0; i < coupons_.size(); i++) {
+	for (unsigned int i = 0; i < coupons_.size(); i++) {
 		delete coupons_[i];
 	}
 }
@@ -44,7 +44,7 @@ void Gestionnaire::ajouterCoupon(const string& code, double rabais, int cout)
 
 Membre* Gestionnaire::trouverMembre(const string& nomMembre) const
 {
-	for (int i = 0; i < membres_.size(); i++) {
+	for (unsigned int i = 0; i < membres_.size(); i++) {
 		if (*membres_[i] == nomMembre) {
 			return membres_[i];
 		}
@@ -69,7 +69,7 @@ void Gestionnaire::assignerBillet(const string& nomMembre, const string& pnr, do
 	else {
 		prixReel = prixBase;
 	}
-	membre->ajouterBillet(pnr, prixReel, od, tarif, dateVol);
+	membre->ajouterBillet(pnr, prixReel, od, tarif, typeBillet, dateVol);
 }
 
 double Gestionnaire::appliquerCoupon(Membre* membre, double prix)
@@ -81,7 +81,7 @@ double Gestionnaire::appliquerCoupon(Membre* membre, double prix)
 
 	Coupon* meilleurCoupon = membre->getCoupons()[0];
 	vector<Coupon*> coupons = membre->getCoupons();
-	for (int i = 1; i < coupons.size(); ++i) {
+	for (unsigned int i = 1; i < coupons.size(); ++i) {
 		if (*coupons[i] > *meilleurCoupon) {
 			meilleurCoupon = coupons[i];
 		}
@@ -107,7 +107,7 @@ void Gestionnaire::acheterCoupon(const string& nomMembre)
 
 	Coupon* meilleurCoupon = nullptr;
 
-	for (int i = 0; i < coupons_.size(); i++) {
+	for (unsigned int i = 0; i < coupons_.size(); i++) {
 		if (membre->getPoints() >= coupons_[i]->getCout()) {
 			// Si on avait pas encore trouve de meilleur coupon, on fait la premiere assignation
 			if (meilleurCoupon == nullptr) {
@@ -131,7 +131,7 @@ void Gestionnaire::acheterCoupon(const string& nomMembre)
 ostream& operator<<(ostream& o, const Gestionnaire& gestionnaire)
 {
 	o << "=================== ETAT ACTUEL DU PROGRAMME ==================\n\n";
-	for (int i = 0; i < gestionnaire.membres_.size(); i++) {
+	for (unsigned int i = 0; i < gestionnaire.membres_.size(); i++) {
 		o << *gestionnaire.membres_[i];
 	}
 

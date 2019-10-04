@@ -23,5 +23,5 @@ int FlightPass::getNbUtilisationsRestante() const {
 
 //à faire
 ostream& operator<<(ostream& os, const FlightPass& flightpass) {
-	os << 
+	return os;
 }
