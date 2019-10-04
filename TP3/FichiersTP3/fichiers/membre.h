@@ -23,9 +23,9 @@ class Membre {
 public:
 	// Constructeurs
 
-	//à modifer
+	//Modifié
 	Membre();
-	//à modifer
+	//Modifié
 	Membre(const string& nom, TypeMembre typeMembre);
 	//à modifer
 	Membre(const Membre& membre);

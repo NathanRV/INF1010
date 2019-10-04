@@ -11,13 +11,13 @@
 
 class FlightPass : public Billet {
 public:
-	//à faire 
+	//fait (à vérifier s'il faut inclure nbUtilisationsRestante_ comme param)
 	FlightPass(const string& pnr, const string& nomPassager, double prix, const string& od, TarifBillet tarif, TypeBillet typeBillet);
 
-	//à faire 
+	//fait
 	void decrementeNbUtilisations();
 
-	//à faire 
+	//fait
 	 int getNbUtilisationsRestante() const;
 
 	 //à faire 

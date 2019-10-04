@@ -7,15 +7,17 @@
 
 #include "membre.h"
 
-//a changer
+//Changé
 Membre::Membre() :
-	nom_("")
+	nom_(""),
+	typeMembre_(Membre_Regulier)
 {
 }
 
-//a changer
+//Changé
 Membre::Membre(const string& nom, TypeMembre typeMembre) :
-	nom_(nom)
+	nom_(nom),
+	typeMembre_(typeMembre)
 {
 }
 
@@ -40,6 +42,11 @@ string Membre::getNom() const
 	return nom_;
 }
 
+//Accesseur de typeMembre_
+TypeMembre Membre::getTypeMembre() const{
+	return typeMembre_;
+}
+
 vector<Billet*> Membre::getBillets() const
 {
 	return billets_;
@@ -51,10 +58,38 @@ void Membre::setNom(const string& nom)
 	nom_ = nom;
 }
 
-// a changer
+//Utilise billet (à finaliser)
+void Membre::utiliserBillet(const string& pnr) {
+	for (unsigned int i = 0, i < billets_.size(), i++) {
+		if (billets_[i]->getPnr() == pnr) {
+			if (billets_[i]->getTypeBillet() == TypeBillet::Flight_Pass) {
+				if (billets_[i]->getNbUtilisationsRestante() == 0) { //si plus de flightpass
+					//efface flightpass
+
+				}
+				else {
+					billets_[i]->decrementeNbUtilisations();
+				}
+			}
+			else { //pas un flightpass
+				//supprime billet (À FAIRE)
+			}
+		}
+	}
+}
+
+//Fait (à vérifier)
 void Membre::ajouterBillet(const string& pnr, double prix, const string& od, TarifBillet tarif, TypeBillet typeBillet, const string& dateVol)
 {
-	Billet* billet = new Billet(pnr, nom_, prix, od, tarif, typeBillet);
+	if (typeBillet == TypeBillet::Billet_Base) {
+		Billet* billet = new Billet(pnr, nom_, prix, od, tarif, typeBillet);
+		}
+	else if (typeBillet == TypeBillet::Billet_Regulier) {
+		Billet* billet = new BilletRegulier(pnr, nom_, prix, od, tarif, dateVol, typeBillet);
+	}
+	else if (typeBillet == TypeBillet::Flight_Pass) {
+		Billet* billet = new FlightPass(pnr, nom_, prix, od, tarif, typeBillet);
+	}
 	billets_.push_back(billet);
 
 	//inutile, cette classe ne fait pas partie du programme de fidèlité.

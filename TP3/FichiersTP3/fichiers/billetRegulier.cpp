@@ -23,7 +23,7 @@ void BilletRegulier::setDateVol(string dateVol) {
 	dateVol_ = dateVol;
 }
 
-//Surcharge opérateur << (appeller afficheur de billet
+//Surcharge opérateur << (à compléter)
 ostream& operator<<(ostream& o, const BilletRegulier& billet) {
 	o << billet.dateVol_ << endl;
 	return o;
