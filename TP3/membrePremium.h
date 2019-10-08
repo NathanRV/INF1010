@@ -2,6 +2,8 @@
 * Titre : membrePremium.h - Travail Pratique #3
 * Date : 20 Septembre 2019
 * Auteur : Jeffrey Lavallee
+ * Mise à jour le : 4 Octobre 2019
+ * Par : Nathan RAMSAY-VEJLENS
 */
 
 
@@ -13,28 +15,29 @@
 
 class MembrePremium : public MembreRegulier {
 public:
-	//à faire
+	//constructeur par parametres
 	MembrePremium(const string& nom);
 
-	//setters
-	//à faire
+	//Modificateurs
+	//Fait
 	void setJourRestants(unsigned int joursRestants);
-	//à faire
+	//Fait
 	void modifierPointsCumules(unsigned int pointCumulee);
 
+	//Surcharge modifierPoints
 
-	//getters
-	//à faire
+	//Accesseurs
+	//Fait
 	unsigned int getJourRestants() const;
-	//à faire
+	//Fait
 	unsigned int getpointsCumulee() const;
 
-	//à faire
-	void ajouterBillet(const string& pnr, double prix, const string& od, TarifBillet tarif, TypeBillet typeBillet, const string& dateVol);
-	//à faire
-	void acheterCoupon(Coupon* coupon);
+	//ajouteBillet selon type
+	void ajouterBillet(const string& pnr, double prix, const string& od, TarifBillet tarif, TypeBillet typeBillet, const string& dateVol) override;
+	//achete coupon
+	void acheterCoupon(Coupon* coupon) override;
 
-	//à faire
+	//surcharge operateur <<
 	friend ostream& operator<<(ostream& os, const MembrePremium& membrePremium);
 
 private:

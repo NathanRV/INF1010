@@ -1,6 +1,8 @@
 /*
  * Date : 12 Septembre 2019
  * Auteur : Philippe CÔTÉ-MORNEAULT
+ * Mise à jour le : 4 Octobre 2019
+ * Par : Nathan RAMSAY-VEJLENS
  */
 
 #ifndef GESTIONNAIRE_H
@@ -17,27 +19,27 @@ public:
 
 	~Gestionnaire();
 
-	// Getters
+	// Accesseurs
 	vector<Membre*> getMembres() const;
 	vector<Coupon*> getCoupons() const;
 
-	//à modifier
+	//AjouteMembre
 	void ajouterMembre(const string& nomMembre, TypeMembre);
 
 	void ajouterCoupon(const string& code, double rabais, int cout);
 
 	Membre* trouverMembre(const string& nomMembre) const;
 
-	//à modifier
+	//assigneBillet à un membre
 	void assignerBillet(const string& nomMembre, const string& pnr, double prixBase, const string& od, TarifBillet tarif, const string& dateVol, bool utiliserCoupon, TypeBillet typeBillet);
 
-	//à modifier
+	//applique coupon à un prix
 	double appliquerCoupon(Membre* membre, double prix);
 	
-	//à modifier
+	//achete coupon
 	void acheterCoupon(const string& nomMembre);
 
-	//à modifier
+	//surcharge operateur <<
 	friend ostream& operator<<(ostream& o, const Gestionnaire& gestionnaire);
 private:
 	vector<Membre*> membres_;

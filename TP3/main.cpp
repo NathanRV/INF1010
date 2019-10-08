@@ -1,6 +1,18 @@
 /*
  * Date : 12 Septembre 2019
  * Auteur : Philippe CÔTÉ-MORNEAULT
+ *	1. Pourquoi a-t-on besoin de l’attribut type_ dans la classe membre? Que ce serait-il passé 
+ *	s’il n’existait pas?  
+ *	Afin de pouvoir savoir à quel méthode nous devons faire appel durant l'exécution du programme. 
+ *	Sans celui-ci, nous ne pourrions savoir quel type de membre nous avons lors de l'utilisation du 
+ *	vecteur de pointeurs de membre dans le gestionnaire et nous ne pourrions faire de "downcasting"
+ *	afin d'appeler la méthode getPoints() par exemple. 
+ *	
+ *	2. Quelle est l’importance de l’utilisation d’un static_cast ?
+ *	Afin de pouvoir faire appel à des méthodes d'une autre classe en vérifiant qu'il y a bel et bien
+ *	un lien d'héritage entre les deux. S'il n'y a pas de lien, il y aura une erreur de compilation.
+ *	D'autres méthodes peuvent être utilisés, mais elles peuvent mener à une erreur de "undefined behaviour".
+ *	
  */
 
 #include <string>

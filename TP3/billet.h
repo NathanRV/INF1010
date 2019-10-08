@@ -1,6 +1,8 @@
 /*
  * Date : 12 Septembre 2019
  * Auteur : Philippe CÔTÉ-MORNEAULT
+ * Mise à jour le : 4 Octobre 2019
+ * Par : Nathan RAMSAY-VEJLENS
  */
 
 #ifndef BILLET_H
@@ -19,9 +21,9 @@ enum TypeBillet {Billet_Base, Billet_Regulier, Flight_Pass};
 class Billet {
 public:
 	// Constructeurs
-	//à modifier
+	//constructeur par defaut
 	Billet();
-	//à modifier
+	//constructeur par parametres
 	Billet(const string& pnr, const string& nomPassager, double prix, const string& od, TarifBillet tarif, TypeBillet typeBillet);
 
 	virtual ~Billet(); //virtual permet de bien delete les object derivé 
@@ -33,7 +35,7 @@ public:
 	string getOd() const;
 	TarifBillet getTarif() const;
 
-	//à faire
+	//accesseur de typeBillet
 	TypeBillet getTypeBillet() const;
 
 	// Setters
@@ -42,12 +44,12 @@ public:
 	void setPrix(double prix);
 	void setOd(const string& od);
 	void setTarif(TarifBillet tarif);
-	//à faire
+	//Modificateur de typeBillet
 	void setTypeBillet(TypeBillet typeBillet);
 
 	string formatTarif(TarifBillet tarif) const;
 
-	//à modifer
+	//surcharge operateur <<
 	friend ostream& operator<<(ostream& o, const Billet& billet);
 private:
 	string pnr_;

@@ -2,6 +2,8 @@
 * Titre : membre.h - Travail Pratique #3
 * Date : 20 Septembre 2019
 * Auteur : Jeffrey Lavallee
+ * Mise à jour le : 4 Octobre 2019
+ * Par : Nathan RAMSAY-VEJLENS
 */
 
 
@@ -23,37 +25,37 @@ class Membre {
 public:
 	// Constructeurs
 
-	//à modifer
+	//constructeur par defaut
 	Membre();
-	//à modifer
+	//constructeur par parametres
 	Membre(const string& nom, TypeMembre typeMembre);
-	//à modifer
+	//constructeur par copie
 	Membre(const Membre& membre);
 
 	virtual ~Membre(); //virtual permet de bien delete les object derivé 
 
-	// Getters
+	// accesseurs
 	string getNom() const;
 	TypeMembre getTypeMembre() const;
 
 	vector<Billet*> getBillets() const;
 
 
-	// Setters
+	// modificateurs
 	void setNom(const string& nom);
 
-	//à faire
+	//utilise billet
 	void utiliserBillet(const string& pnr);
 
-	//à modifer
-	void ajouterBillet(const string& pnr, double prix, const string& od, TarifBillet tarif, TypeBillet typeBillet , const string& dateVol);
+	//ajoutebillet
+	virtual void ajouterBillet(const string& pnr, double prix, const string& od, TarifBillet tarif, TypeBillet typeBillet , const string& dateVol);
 
 	bool operator==(const string& nomMembre) const;
 	friend bool operator==(const string& nomMembre, const Membre& membre);
 
 	Membre& operator=(const Membre& membre);
 
-	//à modifer
+	//surcharge operateur <<
 	friend ostream& operator<<(ostream& o, const Membre& membre);
 protected:
 	string nom_;

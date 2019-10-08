@@ -11,16 +11,16 @@
 
 class FlightPass : public Billet {
 public:
-	//à faire 
+	//constructeur par parametres
 	FlightPass(const string& pnr, const string& nomPassager, double prix, const string& od, TarifBillet tarif, TypeBillet typeBillet);
 
-	//à faire 
+	//fait
 	void decrementeNbUtilisations();
 
-	//à faire 
+	//fait
 	 int getNbUtilisationsRestante() const;
 
-	 //à faire 
+	 //Surcharge operateur <<
 	friend ostream& operator<<(ostream& os ,const FlightPass& flightpass);
 
 private:
