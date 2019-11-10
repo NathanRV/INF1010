@@ -11,6 +11,7 @@
 #include <vector>
 #include <iterator> 
 #include <iomanip>
+#include <algorithm>
 
 #include "flightPass.h"
 #include "billetRegulier.h"
@@ -36,7 +37,7 @@ public:
 	void setNom(const string& nom);
 	
 
-	//TODO
+	//à revoir
 	vector<Billet*>::iterator trouverBillet(const string& pnr);
 
 

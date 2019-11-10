@@ -19,6 +19,7 @@ public:
 	vector<Coupon*> getCoupons() const;
 	
 	Membre& operator+=(Coupon* coupon);
+	//À revoir
 	Membre& operator-=(Coupon* coupon);
 	void modifierPoints(int points);
 	void ajouterBillet(Billet* billet) override;
@@ -26,7 +27,7 @@ public:
 	double calculerPoints(Billet* billet) const;
 	virtual bool peutAcheterCoupon(Coupon* coupon) const;
 	virtual void acheterCoupon(Coupon* coupon);
-
+	//à revoir
 	void afficher(ostream& o) const override;
 protected:
 	int points_;

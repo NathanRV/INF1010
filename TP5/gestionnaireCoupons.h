@@ -5,19 +5,18 @@
 * Auteur: Allan BEDDOUK & Jeffrey LAVALLEE
 *******************************************/
 
-#include "gestionnaireGenerique.h"
 
 #ifndef GESTIONNAIRECOUPONS_H
 #define	GESTIONNAIRECOUPONS_H	
 
 #include <vector>
-
+#include <string>
 #include "membrePremium.h"
 #include "solde.h"
 #include "gestionnaireGenerique.h"
+#include "coupon.h"
 
-
-class GestionnaireCoupons: public GestionnaireGenerique<Coupon T, C>
+class GestionnaireCoupons: public GestionnaireGenerique<Coupon*, vector<Coupon*>, AjouterCoupon>
 {
 public:
 	double appliquerCoupon(Membre* membre, double prix);

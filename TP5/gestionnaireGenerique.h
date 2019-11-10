@@ -34,13 +34,17 @@ using namespace  std;
 #ifndef _GESTIONNAIREGEN_H_
 #define _GESTIONNAIREGEN_H_
 
-template<typename T,typename C>
+template<typename T,typename C,typename FoncteurAjouter>
 class GestionnaireGenerique
 {
 public:
-	C getConteneur() const;
-	void ajouter(const T& t);
-	int getNombreElements() const;
+	C getConteneur() const { return conteneur_; };
+	void ajouter(const T& t) 
+	{ 
+		FoncteurAjouter fct = FoncteurAjouter(conteneur_);
+		fct(t);
+	};
+	int getNombreElements() const { return conteneur_.size(); };
 protected:
 	C conteneur_;
 };

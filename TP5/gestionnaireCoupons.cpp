@@ -4,7 +4,8 @@
 * Auteur: Allan BEDDOUK & Jeffrey LAVALLEE
 *******************************************/
 
-#include "GestionnaireCoupons.h"
+#include "gestionnaireCoupons.h"
+
 
 double GestionnaireCoupons::appliquerCoupon(Membre* membre, double prix)
 {

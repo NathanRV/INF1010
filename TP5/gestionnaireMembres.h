@@ -10,21 +10,25 @@
 #define	GESTIONNAIREMEMBRES_H
 
 #include <vector>
-
+#include <map>
+#include <string>
 #include "membrePremium.h"
+#include "membreRegulier.h"
 #include "solde.h"
 #include "gestionnaireGenerique.h"
 #include "foncteur.h"
+#include "billet.h"
 
-class GestionnaireMembres: public GestionnaireGenerique <pair<string, Membre*>, map<string, Membre*>, AjouterMembre> {
+class GestionnaireMembres: public GestionnaireGenerique <pair<string, Membre*>, map<string, Membre*>, AjouterMembre> 
+{
 public:
 
 	void assignerBillet(Billet* billet, const string& nomMembre, int rabaisCoupon);
 
-	//TODO
+	//fait
 	double calculerRevenu() const;
 
-	//TODO
+	//fait
 	int calculerNombreBilletsEnSolde() const;
 
 	//TODO

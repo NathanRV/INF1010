@@ -20,6 +20,12 @@ Coupon::Coupon(const string& code, double rabais, int cout) :
 {
 }
 
+Coupon::Coupon(const Coupon* coupon)
+	:code_(coupon->code_),
+	rabais_(coupon->rabais_),
+	cout_(coupon->cout_)
+{}
+
 Coupon::~Coupon()
 {
 }
@@ -69,4 +75,18 @@ void Coupon::afficher(ostream& o) const
 	o << "\t\t- Coupon " << code_ << ". Rabais : " << rabais_ << "." << endl;
 }
 
+void Coupon::operator=(const Coupon* coupon)
+{
+	code_ = coupon->code_;
+	rabais_ = coupon->rabais_;
+	cout_ = coupon->cout_;
+}
+
 //todo operateur<<
+
+ostream& operator<<(ostream& o, const Coupon* c)
+{
+	// TODO: insérer une instruction return ici
+	c->afficher(o);
+	return o;
+}
