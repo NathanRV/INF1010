@@ -397,18 +397,18 @@ int main() {
 	tests.push_back(g_membres->calculerNombreBilletsEnSolde() == 4);
 
 	// Test 63: calculerRevenu
-	/*tests.push_back(int(g_membres->calculerRevenu()) == 88035);
+	tests.push_back(int(g_membres->calculerRevenu()) == 88035);
 
 	// Test 64 : getBilletMin()
 	tests.push_back(g_membres->getBilletMin("Alex")->getPnr() == "A1B2C3");
 
 	// Test 65 : getBilletMax()
-	/*tests.push_back(g_membres->getBilletMax("Alex")->getPnr() == "J9K5L0");
+	tests.push_back(g_membres->getBilletMax("Alex")->getPnr() == "J9K5L0");
 
 	// Test 66 : trouverBilletParIntervallle()
 	tests.push_back(g_membres->trouverBilletParIntervallle(alex, 800.0, 10000.0).size() == 3 && g_membres->trouverBilletParIntervallle(alex, 600.0, 830.0).size() == 0);
 
-	*/
+	
 	// Affichage des tests
 	cout << "TESTS" << endl;
 	for (unsigned int i = 0; i < tests.size(); i++)
@@ -421,10 +421,10 @@ int main() {
 	}
 
 	cout << endl;
-	/*//// Affichage du programme
+	//// Affichage du programme
 	g_membres->afficher(cout);
 
-	// Liberation de la memoire
+	/*// Liberation de la memoire
 	delete b1;
 	delete b2;
 	delete brs1;

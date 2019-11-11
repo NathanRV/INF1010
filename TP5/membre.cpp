@@ -63,7 +63,7 @@ void Membre::utiliserBillet(const string& pnr)
 		cout << "Le billet n'est pas trouve" << endl;
 		return;
 	}
-
+	
 	if (auto flightPass = dynamic_cast<FlightPass*>(*it)) {
 		flightPass->decrementeNbUtilisations();
 		if (flightPass->getNbUtilisationsRestante() > 0) {
@@ -71,10 +71,9 @@ void Membre::utiliserBillet(const string& pnr)
 		}
 	}
 
-	billets_.erase(it);
-	//delete *it;
-	//*it = billets_[billets_.size() - 1];
-	//billets_.pop_back();
+	delete *it;
+	*it = billets_[billets_.size() - 1];
+	billets_.pop_back();
 }
 
 void Membre::ajouterBillet(Billet* billet)

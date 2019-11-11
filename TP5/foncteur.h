@@ -64,11 +64,11 @@ public:
 
 	bool operator()(Billet* billet)
 	{
-		if (billet->getPrix() > borneInf_&& billet->getPrix() < borneSup_)
+		if (billet->getPrix() >= borneInf_&& billet->getPrix() <= borneSup_)
 			return true;
 		return false;
 	}
-//  TODO
+
 private:
 	double borneInf_;
 	double borneSup_;

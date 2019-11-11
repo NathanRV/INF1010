@@ -18,7 +18,7 @@ public:
 	Coupon();
 	Coupon(const string& code, double rabais, int cout);
 	//ajout pertinent?
-	Coupon(const Coupon* coupon);
+	//Coupon(const Coupon* coupon);
 	
 	~Coupon();
 
@@ -38,10 +38,10 @@ public:
 	void afficher(ostream& o) const;
 
 	//ajout pertinent?
-	void operator=(const Coupon* coupon);
+	//void operator=(const Coupon* coupon);
 
 	//fait
-	friend ostream& operator<<(ostream& o, Coupon* c);
+	friend ostream& operator<<(ostream& o, const Coupon* c);
 private:
 	string code_;
 	double rabais_;

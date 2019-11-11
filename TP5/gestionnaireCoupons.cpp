@@ -10,23 +10,26 @@
 double GestionnaireCoupons::appliquerCoupon(Membre* membre, double prix)
 {
 	MembreRegulier* membreReg = dynamic_cast<MembreRegulier*>(membre);
-
-	if (!membreReg || membreReg->getCoupons().size() == 0) {
-		cout << "Le membre n'a pas de coupon utilisable\n";
-		return 0;
-	}
-
-	Coupon* meilleurCoupon = membreReg->getCoupons()[0];
-	vector<Coupon*> coupons = membreReg->getCoupons();
-	for (size_t i = 1; i < coupons.size(); ++i) {
-		if (*coupons[i] > *meilleurCoupon) {
-			meilleurCoupon = coupons[i];
+	if(membreReg!=nullptr)
+	{
+		if (!membreReg || membreReg->getCoupons().size() == 0) {
+			cout << "Le membre n'a pas de coupon utilisable\n";
+			return 0;
 		}
+
+		Coupon* meilleurCoupon = membreReg->getCoupons()[0];
+		vector<Coupon*> coupons = membreReg->getCoupons();
+		for (size_t i = 1; i < coupons.size(); ++i) {
+			if (*coupons[i] > * meilleurCoupon) {
+				meilleurCoupon = coupons[i];
+			}
+		}
+
+		*membreReg -= meilleurCoupon;
+
+		return prix * meilleurCoupon->getRabais();
 	}
-
-	*membreReg -= meilleurCoupon;
-
-	return prix * meilleurCoupon->getRabais();
+	return prix;
 }
 
 void GestionnaireCoupons::acheterCoupon(Membre* membre)

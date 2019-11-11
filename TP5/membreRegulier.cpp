@@ -97,5 +97,5 @@ void MembreRegulier::afficher(ostream& o) const
 	Membre::afficher(o);
 	o << "\t" << "- Points : " << points_ << endl;
 	o << "\t" << "- Coupons :" << endl;	
-	copy(coupons_.begin(), coupons_.end(), ostream_iterator <const Coupon*> (o, "\n"));
+	copy(coupons_.begin(), coupons_.end(), ostream_iterator<const Coupon*>(o, "\n"));
 }

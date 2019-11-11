@@ -107,7 +107,7 @@ void Billet::afficher(ostream& o) const
 
 //Fait
 
-ostream& operator<<(ostream& o, Billet const* billet)
+ostream& operator<<(ostream& o, const Billet* billet)
 {
 	billet->afficher(o);
 	return o;
