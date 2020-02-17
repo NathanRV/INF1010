@@ -408,7 +408,7 @@ int main() {
 	// Test 66 : trouverBilletParIntervallle()
 	tests.push_back(g_membres->trouverBilletParIntervallle(alex, 800.0, 10000.0).size() == 3 && g_membres->trouverBilletParIntervallle(alex, 600.0, 830.0).size() == 0);
 
-	
+
 	// Affichage des tests
 	cout << "TESTS" << endl;
 	for (unsigned int i = 0; i < tests.size(); i++)
@@ -424,7 +424,7 @@ int main() {
 	//// Affichage du programme
 	g_membres->afficher(cout);
 
-	/*// Liberation de la memoire
+	// Liberation de la memoire
 	delete b1;
 	delete b2;
 	delete brs1;
@@ -442,6 +442,6 @@ int main() {
 
 	delete g_membres;
 	delete g_coupons;
-*/
+
 	return 0;
 }

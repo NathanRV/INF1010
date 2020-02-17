@@ -2,6 +2,8 @@
 * Titre: Travail pratique #5 - coupon.h
 * Date: 30 octobre 2019
 * Auteur: Allan BEDDOUK & Jeffrey LAVALLEE
+* Modification : Nathan RAMSAY-VEJLENS
+* Modifié le : 12 novembre 2019
 *******************************************/
 
 #ifndef COUPON_H
@@ -17,8 +19,6 @@ public:
 	// Constructeurs
 	Coupon();
 	Coupon(const string& code, double rabais, int cout);
-	//ajout pertinent?
-	//Coupon(const Coupon* coupon);
 	
 	~Coupon();
 
@@ -37,10 +37,13 @@ public:
 
 	void afficher(ostream& o) const;
 
-	//ajout pertinent?
-	//void operator=(const Coupon* coupon);
 
-	//fait
+/****************************************************************************
+* Fonction:		Coupon::operator<<
+* Description:	Apelle la fonction afficher de coupon
+* Paramètres:	ostream& o,const Coupon* c
+* Retour:		ostream&
+****************************************************************************/
 	friend ostream& operator<<(ostream& o, const Coupon* c);
 private:
 	string code_;

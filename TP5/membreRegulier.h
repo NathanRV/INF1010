@@ -2,6 +2,8 @@
 * Titre: Travail pratique #5 - membreRegulier.h
 * Date: 30 octobre 2019
 * Auteur: Allan BEDDOUK & Jeffrey LAVALLEE
+* Modification : Nathan RAMSAY-VEJLENS
+* Modifié le : 13 novembre 2019
 *******************************************/
 
 #ifndef MEMBRE_REGULIER_H
@@ -19,7 +21,13 @@ public:
 	vector<Coupon*> getCoupons() const;
 	
 	Membre& operator+=(Coupon* coupon);
-	//À revoir
+
+	/****************************************************************************
+	* Fonction:		MembreRegulier::operator-=
+	* Description:	Permet d'enlever un coupon du vecteur de coupon
+	* Paramètres:	Coupon* coupon
+	* Retour:		Membre&
+	****************************************************************************/
 	Membre& operator-=(Coupon* coupon);
 	void modifierPoints(int points);
 	void ajouterBillet(Billet* billet) override;
@@ -27,7 +35,12 @@ public:
 	double calculerPoints(Billet* billet) const;
 	virtual bool peutAcheterCoupon(Coupon* coupon) const;
 	virtual void acheterCoupon(Coupon* coupon);
-	//à revoir
+	/****************************************************************************
+	* Fonction:		MembreRegulier::afficher
+	* Description:	Permet d'afficher les attributs d'un MembreRegulier
+	* Paramètres:	ostream& o
+	* Retour:		aucun
+	****************************************************************************/
 	void afficher(ostream& o) const override;
 protected:
 	int points_;

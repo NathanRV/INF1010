@@ -2,11 +2,32 @@
 * Titre: Travail pratique #5 - gestionnaireCoupons.cpp
 * Date: 30 octobre 2019
 * Auteur: Allan BEDDOUK & Jeffrey LAVALLEE
+* Modification : Nathan RAMSAY-VEJLENS
+* Modifié le : 12 novembre 2019
 *******************************************/
 
 #include "gestionnaireCoupons.h"
 
+/****************************************************************************
+* Fonction:		GestionnaireCoupons::~GestionnaireCoupons()
+* Description:	Destructeur
+* Paramètres:	aucun
+* Retour:		aucun
+****************************************************************************/
+GestionnaireCoupons::~GestionnaireCoupons()
+{
+	for (auto it=conteneur_.begin();it!=conteneur_.end();it++)
+	{
+		delete *it;
+	}
+}
 
+/****************************************************************************
+* Fonction:		GestionnaireCoupons::appliquerCoupon()
+* Description:	Utilise un coupon de rabais
+* Paramètres:	Membre* membre, double prix
+* Retour:		double
+****************************************************************************/
 double GestionnaireCoupons::appliquerCoupon(Membre* membre, double prix)
 {
 	MembreRegulier* membreReg = dynamic_cast<MembreRegulier*>(membre);
@@ -19,9 +40,9 @@ double GestionnaireCoupons::appliquerCoupon(Membre* membre, double prix)
 
 		Coupon* meilleurCoupon = membreReg->getCoupons()[0];
 		vector<Coupon*> coupons = membreReg->getCoupons();
-		for (size_t i = 1; i < coupons.size(); ++i) {
-			if (*coupons[i] > * meilleurCoupon) {
-				meilleurCoupon = coupons[i];
+		for (auto it=coupons.begin(); it != coupons.end();it++) {
+			if (*(*it) > * meilleurCoupon) {
+				meilleurCoupon = *it;
 			}
 		}
 
@@ -32,6 +53,12 @@ double GestionnaireCoupons::appliquerCoupon(Membre* membre, double prix)
 	return prix;
 }
 
+/****************************************************************************
+* Fonction:		GestionnaireCoupons::acheterCoupon()
+* Description:	Achete un coupon
+* Paramètres:	Membre* membre
+* Retour:		aucun
+****************************************************************************/
 void GestionnaireCoupons::acheterCoupon(Membre* membre)
 {
 	if (conteneur_.size() == 0) {
@@ -42,15 +69,15 @@ void GestionnaireCoupons::acheterCoupon(Membre* membre)
 	Coupon* meilleurCoupon = nullptr;
 
 	if (auto membreRegulier = dynamic_cast<MembreRegulier*>(membre)) {
-		for (size_t i = 0; i < conteneur_.size(); ++i) {
-			if (membreRegulier->peutAcheterCoupon(conteneur_[i])) {
+		for (auto it = conteneur_.begin(); it != conteneur_.end();it++) {
+			if (membreRegulier->peutAcheterCoupon(*it)) {
 				// Si on avait pas encore trouve de meilleur coupon, on fait la premiere assignation
 				if (meilleurCoupon == nullptr) {
-					meilleurCoupon = conteneur_[i];
+					meilleurCoupon = *it;
 				}
 				// Sinon on compare si le coupon courant a un rabais superieur au meilleur coupon
-				else if (*conteneur_[i] > * meilleurCoupon) {
-					meilleurCoupon = conteneur_[i];
+				else if (*(*it) > * meilleurCoupon) {
+					meilleurCoupon = *it;
 				}
 			}
 		}

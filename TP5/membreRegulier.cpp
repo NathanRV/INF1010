@@ -2,6 +2,8 @@
 * Titre: Travail pratique #5 - membreRegulier.cpp
 * Date: 30 octobre 2019
 * Auteur: Allan BEDDOUK & Jeffrey LAVALLEE
+* Modification : Nathan RAMSAY-VEJLENS
+* Modifié le : 13 novembre 2019
 *******************************************/
 
 #include "membreRegulier.h"
@@ -34,21 +36,17 @@ Membre& MembreRegulier::operator+=(Coupon* coupon)
 	return *this;
 }
 
-//À revoir
+/****************************************************************************
+* Fonction:		MembreRegulier::operator-=
+* Description:	Permet d'enlever un coupon du vecteur de coupon
+* Paramètres:	Coupon* coupon
+* Retour:		Membre&
+****************************************************************************/
 Membre& MembreRegulier::operator-=(Coupon* coupon)
 {
 	auto it = find_if(coupons_.begin(), coupons_.end(), [coupon](Coupon* coup1) {return coup1 == coupon; });
-	coupons_.erase(it); 
-
-	/*Ancienne technique
-	for (size_t i = 0; i < coupons_.size(); ++i) {
-		if (coupons_[i] == coupon) {
-			coupons_[i] = coupons_[coupons_.size() - 1];
-			coupons_.pop_back();
-			return *this;
-		}
-	}*/
-
+	*it = coupons_[coupons_.size() - 1];
+	coupons_.pop_back(); 
 	return *this;
 }
 
@@ -91,7 +89,13 @@ void MembreRegulier::acheterCoupon(Coupon* coupon)
 }
 
 
-//à revoir
+
+/****************************************************************************
+* Fonction:		MembreRegulier::afficher
+* Description:	Permet d'afficher les attributs d'un MembreRegulier
+* Paramètres:	ostream& o
+* Retour:		aucun
+****************************************************************************/
 void MembreRegulier::afficher(ostream& o) const
 {
 	Membre::afficher(o);

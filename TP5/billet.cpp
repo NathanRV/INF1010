@@ -2,6 +2,8 @@
 * Titre: Travail pratique #5 - billet.cpp
 * Date: 30 octobre 2019
 * Auteur: Allan BEDDOUK & Jeffrey LAVALLEE
+* Modification : Nathan RAMSAY-VEJLENS
+* Modifié le : 13 novembre 2019
 *******************************************/
 
 #include "billet.h"
@@ -105,7 +107,12 @@ void Billet::afficher(ostream& o) const
 	o << "\t\t\t" << setw(11) << "- Trajet" << ": " << od_ << endl;
 }
 
-//Fait
+/****************************************************************************
+* Fonction:		Billet::operator<<
+* Description:	Apelle la fonction afficher de Billet
+* Paramètres:	ostream& o, const Billet* billet
+* Retour:		ostream&
+****************************************************************************/
 
 ostream& operator<<(ostream& o, const Billet* billet)
 {

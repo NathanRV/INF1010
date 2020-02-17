@@ -1,3 +1,6 @@
+# ignore google drive sync setting
+*.ini
+
 # ignore all logs
 *.log
 

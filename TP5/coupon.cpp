@@ -2,6 +2,8 @@
 * Titre: Travail pratique #5 - coupon.cpp
 * Date: 30 octobre 2019
 * Auteur: Allan BEDDOUK & Jeffrey LAVALLEE
+* Modification : Nathan RAMSAY-VEJLENS
+* Modifié le : 12 novembre 2019
 *******************************************/
 
 #include "coupon.h"
@@ -17,14 +19,7 @@ Coupon::Coupon(const string& code, double rabais, int cout) :
 	code_(code),
 	rabais_(rabais),
 	cout_(cout)
-{
-}
-
-/*Coupon::Coupon(const Coupon* coupon)
-	:code_(coupon->code_),
-	rabais_(coupon->rabais_),
-	cout_(coupon->cout_)
-{}*/
+{}
 
 Coupon::~Coupon()
 {
@@ -75,15 +70,13 @@ void Coupon::afficher(ostream& o) const
 	o << "\t\t- Coupon " << code_ << ". Rabais : " << rabais_ << "." << endl;
 }
 
-/*void Coupon::operator=(const Coupon* coupon)
-{
-	code_ = coupon->code_;
-	rabais_ = coupon->rabais_;
-	cout_ = coupon->cout_;
-}*/
 
-//todo operateur<<
-
+/****************************************************************************
+* Fonction:		Coupon::operator<<
+* Description:	Apelle la fonction afficher de coupon
+* Paramètres:	ostream& o,const Coupon* c
+* Retour:		ostream&
+****************************************************************************/
 ostream& operator<<(ostream& o, const Coupon* c)
 {
 	c->afficher(o);

@@ -2,6 +2,8 @@
 * Titre: Travail pratique #5 - membre.cpp
 * Date: 30 octobre 2019
 * Auteur: Allan BEDDOUK & Jeffrey LAVALLEE
+* Modification : Nathan RAMSAY-VEJLENS
+* Modifié le : 12 novembre 2019
 *******************************************/
 
 #include "membre.h"
@@ -16,20 +18,29 @@ Membre::Membre(const string& nom) :
 {
 }
 
-//todo
+
+/****************************************************************************
+* Fonction:		Membre::Membre()
+* Description:	Constructeur par copie d'un membre
+* Paramètres:	const Membre& membre
+* Retour:		Membre
+****************************************************************************/
 Membre::Membre(const Membre& membre) :
 	nom_(membre.nom_)
 {
-	for (size_t i = 0; i < membre.billets_.size(); ++i) {
-		billets_.push_back(membre.billets_[i]->clone());
-	}
+	copy(membre.billets_.begin(), membre.billets_.end(), billets_.begin());
 }
 
-//todo
+/****************************************************************************
+* Fonction:		Membre::~Membre()
+* Description:	Destructeur virtuel
+* Paramètres:	aucun
+* Retour:		aucun
+****************************************************************************/
 Membre::~Membre()
 {
-	for (size_t i = 0; i < billets_.size(); ++i) {
-		delete billets_[i];
+	for (auto it=billets_.begin(); it!=billets_.end(); it++) {
+		delete *it;
 	}
 }
 
@@ -48,13 +59,24 @@ void Membre::setNom(const string& nom)
 	nom_ = nom;
 }
 
-//à revoir
+/****************************************************************************
+* Fonction:		Membre::trouverBillet
+* Description:	retourne iterateur sur billet cherché si disponible
+* Paramètres:	const string& pnr
+* Retour:		vector<Billet*>::iterator
+****************************************************************************/
 vector<Billet*>::iterator Membre::trouverBillet(const string& pnr)
 {
 	return find_if(billets_.begin(), billets_.end(), [pnr](Billet* billet) {return billet->getPnr() == pnr; });
 }
 
-//todo
+
+/****************************************************************************
+* Fonction:		Membre::utiliserBillet
+* Description:	Deep copy d'un membre
+* Paramètres:	const string& pnr
+* Retour:		aucun
+****************************************************************************/
 void Membre::utiliserBillet(const string& pnr)
 {
 	auto it = trouverBillet(pnr);
@@ -93,29 +115,36 @@ bool operator==(const string& nomMembre, const Membre& membre)
 }
 
 
-//fait
+/****************************************************************************
+* Fonction:		Membre::operator=
+* Description:	Deep copy d'un membre
+* Paramètres:	const Membre& membre
+* Retour:		Membre&
+****************************************************************************/
 Membre& Membre::operator=(const Membre& membre)
 {
 	if (this != &membre) {
 		nom_ = membre.nom_;
 
-		for (Billet* billet : billets_) {
-			delete billet;
+		for (auto it = billets_.begin(); it != billets_.end();it++) {
+			delete *it;
 		}
 
 		billets_.clear();
-
-		for (Billet* billet : membre.billets_) {
-			billets_.push_back(billet);
-			copy(membre.billets_.begin(), membre.billets_.end(), back_inserter(billets_));
-		}
+		
+		copy(membre.billets_.begin(), membre.billets_.end(), back_inserter(billets_));
 	}
 
 	return *this;
 }
 
 
-//todo
+/****************************************************************************
+* Fonction:		Membre::afficher
+* Description:	Affiche les attributs du Membre
+* Paramètres:	ostream& o
+* Retour:		aucun
+****************************************************************************/
 void Membre::afficher(ostream& o) const
 {
 	o << setfill(' ');

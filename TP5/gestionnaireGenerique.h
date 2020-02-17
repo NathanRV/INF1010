@@ -2,34 +2,15 @@
 * Titre: Travail pratique #5 - GestionnaireGenerique.h
 * Date: 30 octobre 2019
 * Auteur: Allan BEDDOUK & Jeffrey LAVALLEE
+* Modification : Nathan RAMSAY-VEJLENS
+* Modifié le : 12 novembre 2019
 *******************************************/
 
 #pragma once
 
 #include <algorithm>
 #include "foncteur.h"
-#include "T.h"
-#include "C.h"
-
 using namespace  std;
-
-/*
-    class GestionnaireGenerique
-
-    Méthodes :
-    C getConteneur() const;
-    void ajouter(const T& t);
-    int getNombreElements() const;
- 
-    Attributs :
-    C conteneur_;
-*/
-
-/*              
-	* typename T   = pair<string, Membre*> ou Coupon*; 
-	* Conteneur   = map<string, Membre*> ou vector<Coupon*>; 
-	* FoncteurAjouter = AjouterMembre ou AjouterCoupon
-*/
 
 #ifndef _GESTIONNAIREGEN_H_
 #define _GESTIONNAIREGEN_H_
@@ -39,6 +20,13 @@ class GestionnaireGenerique
 {
 public:
 	C getConteneur() const { return conteneur_; };
+
+  /****************************************************************************
+  * Fonction:	GestionnaireGenerique::ajouter
+  * Description: Permet d'ajouter un element au conteneur à l'aide d'un foncteur
+  * Paramètres:	const T& t
+  * Retour:		aucun
+  ****************************************************************************/
 	void ajouter(const T& t) 
 	{ 
 		FoncteurAjouter fct = FoncteurAjouter(conteneur_);

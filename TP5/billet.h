@@ -2,6 +2,8 @@
 * Titre: Travail pratique #5 - billet.h
 * Date: 30 octobre 2019
 * Auteur: Allan BEDDOUK & Jeffrey LAVALLEE
+* Modification : Nathan RAMSAY-VEJLENS
+* Modifié le : 13 novembre 2019
 *******************************************/
 #ifndef BILLET_H
 #define BILLET_H
@@ -39,7 +41,12 @@ public:
 
 	virtual Billet* clone() const = 0;
 
-	//Fait
+/****************************************************************************
+* Fonction:		Billet::operator<<
+* Description:	Apelle la fonction afficher de Billet
+* Paramètres:	ostream& o, const Billet* billet
+* Retour:		ostream&
+****************************************************************************/
 	friend ostream& operator<<(ostream& o, Billet const* billet);
 
 	virtual void afficher(ostream& o) const;

@@ -2,6 +2,8 @@
 * Titre: Travail pratique #5 - foncteur.h
 * Date: 30 octobre 2019
 * Auteur: Allan BEDDOUK & Jeffrey LAVALLEE
+* Modification : Nathan RAMSAY-VEJLENS
+* Modifié le : 12 novembre 2019
 *******************************************/
 #pragma once
 
@@ -25,9 +27,9 @@ public:
 	vector<Coupon*> operator()(Coupon* coupon)
 	{
 		//algo verifie présence et ajoute par après
-		for (Coupon* coup : conteneur_)
+		for (auto it = conteneur_.begin();it!=conteneur_.end();it++)
 		{
-			if (coupon == coup)
+			if (coupon == *it)
 			{
 				return conteneur_;
 			}
